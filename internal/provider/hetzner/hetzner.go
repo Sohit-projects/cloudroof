@@ -18,8 +18,8 @@ import (
 
 	"github.com/hetznercloud/hcloud-go/v2/hcloud"
 
-	"github.com/mohitsolanki026/cloudroof/internal/provider"
-	"github.com/mohitsolanki026/cloudroof/internal/store"
+	"github.com/Sohit-projects/cloudroof/internal/provider"
+	"github.com/Sohit-projects/cloudroof/internal/store"
 )
 
 const Name = "hetzner"

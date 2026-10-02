@@ -12,8 +12,8 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/mohitsolanki026/cloudroof/internal/actions"
-	"github.com/mohitsolanki026/cloudroof/internal/store"
+	"github.com/Sohit-projects/cloudroof/internal/actions"
+	"github.com/Sohit-projects/cloudroof/internal/store"
 )
 
 // streamAction runs a follow action (journalctl -f, docker logs -f,

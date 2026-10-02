@@ -17,7 +17,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/mohitsolanki026/cloudroof/internal/store"
+	"github.com/Sohit-projects/cloudroof/internal/store"
 )
 
 // PowerAction is the normalized set of power operations. Every supported

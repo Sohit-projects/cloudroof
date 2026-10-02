@@ -24,8 +24,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6"
 
-	"github.com/mohitsolanki026/cloudroof/internal/provider"
-	"github.com/mohitsolanki026/cloudroof/internal/store"
+	"github.com/Sohit-projects/cloudroof/internal/provider"
+	"github.com/Sohit-projects/cloudroof/internal/store"
 )
 
 const Name = "azure"

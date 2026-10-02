@@ -6,10 +6,15 @@ the commands you keep re-typing through SSH.
 
 Nothing is installed on your machines. No credential leaves your box.
 
+> This repository is a fork of
+> [mohitsolanki026/cloudroof](https://github.com/mohitsolanki026/cloudroof)
+> (v1.5.1), continued with the improvements listed under
+> [Roadmap](#roadmap).
+
 **With Go** — installs the full binary, web UI bundled:
 
 ```
-go install github.com/mohitsolanki026/cloudroof/cmd/cloudroof@latest
+go install github.com/Sohit-projects/cloudroof/cmd/cloudroof@latest
 ~/go/bin/cloudroof        # go install puts the binary in $(go env GOPATH)/bin
 ```
 
@@ -23,13 +28,13 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 **Or build from source:**
 
 ```
-git clone https://github.com/mohitsolanki026/cloudroof
+git clone https://github.com/Sohit-projects/cloudroof
 cd cloudroof && make web && make build && ./bin/cloudroof
 ```
 
-Prebuilt binaries are also attached to each
-[release](https://github.com/mohitsolanki026/cloudroof/releases). Then open
-http://localhost:7070.
+Then open http://localhost:7070. This fork does not publish prebuilt binaries
+yet; the original v1.5.1 binaries are on the upstream
+[releases](https://github.com/mohitsolanki026/cloudroof/releases) page.
 
 ## Screenshots
 
@@ -146,7 +151,8 @@ explicitly and name the hosts you will use:
 
 ```
 cloudroof -addr 0.0.0.0:7070 -hosts cloudroof.lan,10.0.0.5
-docker run -d -p 7070:7070 -e CLOUDROOF_HOSTS=cloudroof.lan -v cloudroof:/data ghcr.io/mohitsolanki026/cloudroof
+docker build -t cloudroof .
+docker run -d -p 7070:7070 -e CLOUDROOF_HOSTS=cloudroof.lan -v cloudroof:/data cloudroof
 ```
 
 Binding a network address without `-hosts` works but accepts any `Host` and
@@ -174,12 +180,62 @@ self-refreshing reachability; tag-based groups, bulk actions, and saved custom
 actions; single admin user; one-command install. No metrics history yet, and
 no multi-user — those are later milestones.
 
+## Roadmap
+
+Planned work for this fork, roughly in order.
+
+**Fixes**
+
+- [ ] Docker build: the build stage uses `golang:1.22`, but `go.mod` requires
+      Go 1.26, so `docker build` fails.
+- [ ] Machine page: when a host is unreachable, a tab re-runs its action in a
+      loop, toasting an error and writing an audit row each time.
+- [ ] Log follow: closing a quiet `journalctl -f` / `docker logs -f` leaves
+      its SSH session open until the next log line arrives.
+- [ ] AWS / GCP: after a stop/start, `ssh_host` stops following the new public
+      IP because the stopped instance reported an empty one.
+- [ ] Frontend error handling: Activity can hang on "Loading…", Settings
+      deletes fail silently, and empty error bodies show an empty toast.
+
+**Security**
+
+- [ ] Docker default (`CLOUDROOF_ADDR=:7070`) accepts any `Host` header; keep
+      the DNS-rebinding check on.
+- [ ] Security headers (`frame-ancestors`, CSP, `nosniff`).
+- [ ] Self-host the web fonts instead of loading them from Google.
+- [ ] Built-in login (single admin password + session cookie).
+
+**Tooling**
+
+- [ ] CI: `go vet`, `go test -race`, frontend build, and a check that the
+      committed `web/dist/` is up to date.
+- [ ] ESLint + frontend unit tests.
+- [ ] Tests for `internal/api`, `internal/sshx`, `internal/facts`, and the
+      providers.
+- [ ] Split `web/src/pages/Machine.tsx` (~1,500 lines) into one file per tab.
+
+**Features**
+
+- [ ] Delete / rename / re-tag machines from the UI.
+- [ ] Activity filters (machine, action, failed only) and pagination.
+- [ ] "Run on group" in the bulk dialog.
+- [ ] `netstat` and BusyBox `ps` fallbacks.
+- [ ] Audit log retention.
+- [ ] Metrics history with sparklines.
+- [ ] Notifications (webhook / ntfy / Slack) on reachability and power changes.
+- [ ] SSH jump host / bastion support.
+- [ ] Mobile layout and keyboard / screen-reader accessibility.
+
 ## License
 
 CloudRoof is licensed under the **GNU Affero General Public License v3.0 only**
 (AGPL-3.0-only) — see [LICENSE](LICENSE). In short: you may run, study, modify,
 and share it freely, but if you modify it and offer it to others over a network,
 you must offer them your modified source too.
+
+Originally written by
+[mohitsolanki026](https://github.com/mohitsolanki026/cloudroof); this fork
+keeps the same license.
 
 A separate **commercial license** is available for organizations that cannot use
 AGPL software — contact the maintainer.

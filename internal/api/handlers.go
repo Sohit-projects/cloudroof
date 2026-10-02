@@ -16,11 +16,11 @@ import (
 
 	"golang.org/x/crypto/ssh"
 
-	"github.com/mohitsolanki026/cloudroof/internal/actions"
-	"github.com/mohitsolanki026/cloudroof/internal/facts"
-	"github.com/mohitsolanki026/cloudroof/internal/provider"
-	"github.com/mohitsolanki026/cloudroof/internal/sshx"
-	"github.com/mohitsolanki026/cloudroof/internal/store"
+	"github.com/Sohit-projects/cloudroof/internal/actions"
+	"github.com/Sohit-projects/cloudroof/internal/facts"
+	"github.com/Sohit-projects/cloudroof/internal/provider"
+	"github.com/Sohit-projects/cloudroof/internal/sshx"
+	"github.com/Sohit-projects/cloudroof/internal/store"
 )
 
 const actor = "admin" // single-user in v0.1; multi-user lands in v2.5

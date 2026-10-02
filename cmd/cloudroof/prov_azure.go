@@ -6,4 +6,4 @@
 // Package main: Azure adapter registration (compile out with -tags noazure).
 package main
 
-import _ "github.com/mohitsolanki026/cloudroof/internal/provider/azure"
+import _ "github.com/Sohit-projects/cloudroof/internal/provider/azure"

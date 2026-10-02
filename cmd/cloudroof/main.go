@@ -16,12 +16,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/mohitsolanki026/cloudroof/internal/api"
-	"github.com/mohitsolanki026/cloudroof/internal/config"
-	"github.com/mohitsolanki026/cloudroof/internal/keyring"
-	"github.com/mohitsolanki026/cloudroof/internal/sshx"
-	"github.com/mohitsolanki026/cloudroof/internal/store"
-	"github.com/mohitsolanki026/cloudroof/web"
+	"github.com/Sohit-projects/cloudroof/internal/api"
+	"github.com/Sohit-projects/cloudroof/internal/config"
+	"github.com/Sohit-projects/cloudroof/internal/keyring"
+	"github.com/Sohit-projects/cloudroof/internal/sshx"
+	"github.com/Sohit-projects/cloudroof/internal/store"
+	"github.com/Sohit-projects/cloudroof/web"
 )
 
 var version = "dev"

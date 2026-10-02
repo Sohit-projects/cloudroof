@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mohitsolanki026/cloudroof/internal/sshx"
-	"github.com/mohitsolanki026/cloudroof/internal/store"
+	"github.com/Sohit-projects/cloudroof/internal/sshx"
+	"github.com/Sohit-projects/cloudroof/internal/store"
 )
 
 // Request is one execution ask from the API layer.
